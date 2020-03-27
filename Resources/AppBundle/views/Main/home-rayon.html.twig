@@ -1,0 +1,29 @@
+<div id="home-carousel" class="home-carousel">
+    
+    	<!-- Bannière 1 -->
+	<a href="https://www.editions-actusf.fr/rayon/numerique?p=3">
+		<article class="carousel-post" style="background-image: url('/actusf/media/bandeaux/promos-confinement.jpg')"></article>
+	</a>
+      
+
+	<!-- Bannière 4 -->
+	<a href="http://okpal.com/actusf-graphic/#/">
+		<article class="carousel-post" style="background-image: url('/actusf/media/bandeaux/ban-actusfgraphic-editions-2.jpg')"></article>
+	</a>
+
+	<img alt="Précédent" class="prev-button" id="carousel-prev-button" src="/actusf/media/layout/carousel-arrow.png">
+	<img alt="Suivant" class="next-button" id="carousel-next-button" src="/actusf/media/layout/carousel-arrow.png">
+</div>
+
+<div class="home-articles">
+	{% for article in articles %}
+		<div class="article">
+      {% if article.hasCover() %}
+        {{article.getCoverTag({
+          size: 'w600',
+          link: path('article_show', { slug: article.url })
+        })|raw}}
+      {% endif %}
+		</div>
+	{% endfor %}
+</div>

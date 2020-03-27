@@ -1,0 +1,34 @@
+<div class="article-list">
+{% for article in articles|filter(article => article.has('url')) %}
+    <article class="article-in-list">
+      {% if article.hasCover() %}
+        <div class="article-cover">
+          {{ article.getCoverTag({
+            link: path('article_show', { slug: article.url }),
+            class: "article-cover-image",
+            size: "w300" })|raw }}
+        </div>
+        <div class="article-infos">
+          <p class="article-authors">{{article.authors}}</p>
+          <p class="article-title">
+            <a href="{{path('article_show', { slug: article.url })}}">
+              {{article.title}}
+            </a>
+          </p>
+          {% if article.has('price') %}
+            <p class="article-price">
+              {{article.price|currency(true)|raw}}
+            </p>
+          {% endif %}
+          <a href="{{path('article_show', { slug: article.url })}}">
+            <img src="/actusf/media/layout/arrow.png" class="arrow"
+              alt="Flèche" />
+          </a>
+        </div>
+      {% endif %}
+    </article>
+  {% endfor %}
+</div>
+
+
+{% include 'AppBundle:Article:_list_pagination.html.twig' %}
