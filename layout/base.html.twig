@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% set titleBlock = block("title") %}
+      {% if titleBlock is not empty %}
+        {% block title %}{% endblock %} |
+      {% endif %}
+      {{ app.site.title }}
+    </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {# biblys assets #}
+    {% include "layout:_assets_css.html.twig" %}
+
+    <link rel="stylesheet" href="/theme/styles.css?{ASSETS_VERSION}" />
+    <link rel="icon" type="image/png" href="/theme/favicon.png">
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="https://analytics.biblys.cloud/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '2']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+  </head>
+  <body>
+
+  <div class="page">
+    <header class="header">
+      <div class="logo-and-elements">
+        <div class="blank"></div>
+        <div class="logo">
+          <a href="/">
+            <img src="/theme/logo.png" class="logo-image" alt="Logo Éditions ActuSF"/>
+          </a>
+        </div>
+        <div class="header-elements">
+          <div class="cart">
+            {{ cart_status()|raw }}
+          </div>
+          <div class="social-networks">
+            <a href="https://www.facebook.com/Editions.Actusf/" target="_blank">
+              <img class="icon" src="/theme/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://twitter.com/Editions_ActuSF" target="_blank">
+              <img class="icon" src="/theme/twitter.png" alt="Twitter">
+            </a>
+            <a href="https://www.instagram.com/actusf/" target="_blank">
+              <img class="icon" src="/theme/instagram.png" alt="Instagram">
+            </a>
+            <a href="http://feeds.feedburner.com/EditionsActuSF" target="_blank">
+              <img class="icon" src="/theme/rss.png" alt="Flux RSS">
+            </a>
+          </div>
+          <div class="search">
+            <form action="/articles/search" class="search-form" method="get">
+              <input type="search" class="search-input" name="q" autocorrect="off">
+              <input type="submit" class="search-submit" value="">
+            </form>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Les éditions ActuSF</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+            <li>
+              <a href="/rayon/catalogue">Catalogue</a>
+            </li>
+            <li>
+              <a href="/rayon/numerique">Numérique</a>
+            </li>
+            <li>
+              <a href="/rayon/le-club-de-la-nouvelle">Club de la Nouvelle</a>
+            </li>
+            <li>
+              <a href="/blog/">News</a>
+            </li>
+            <li>
+              <a href="/pages/manuscrits">Manuscrits</a>
+            </li>
+            <li>
+              <a href="/contact/">Contact</a>
+            </li>
+            <li>
+              <a href="/pages/inscription-a-la-newsletter">Newsletter</a>
+            </li>
+          </ul>
+        </div>
+        <!--/.navbar-collapse -->
+      </nav>
+    </header>
+
+    <main class="content">
+      {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+      <ul class="footer">
+        <li>
+          <a href="/pages/mentions-legales">
+            Mentions légales
+          </a>
+        </li>
+        <li>
+          <a href="/pages/conditions-generales-de-vente">
+            Conditions générales de vente
+          </a>
+        </li>
+        <li>
+          <a href="http://www.biblys.fr/" target="_blank">
+            <img src="/assets/images/propulse-par-biblys.png" alt="Propulsé par Biblys">
+          </a>
+        </li>
+      </ul>
+    </footer>
+  </div>
+
+  {{ app.axysMenu|raw }}
+  {% include "layout:_assets_js.html.twig" %}
+  <script src="/theme/main.js"></script>
+  </body>
+</html>

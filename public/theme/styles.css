@@ -68,7 +68,7 @@ ul {
 
 .search-submit {
   background-color: white;
-  background-image: url('/actusf/media/layout/search.png');
+  background-image: url('/theme/search.png');
   background-size: contain;
   border: 0;
   display: inline-block;

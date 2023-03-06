@@ -1,0 +1,165 @@
+{% extends "layout:base.html.twig" %}
+
+{% block title %}
+	{{  article.title }}
+{% endblock %}
+
+{% block main %}
+	<article class="article">
+
+		<div class="cover-col">
+			{% if article.hasCover() %}
+				{{ article.getCoverTag({ class:"cover-image", size:"w300", rel: "lightbox" })|raw }}
+			{% endif %}
+
+			<div class="price">
+				<p></p>
+				<p class="availability">
+					Collection
+					{{ article.collection.name }}<br>
+					{{ article.availabilityLed|raw }}
+					<span>{{ article.availabilityText }}</span>
+				</p>
+				<p>
+					{% if article.type.id == 1 %}
+						Livre papier<br/>
+					{% elseif article.type.id == 2 %}
+						Livre numérique<br/>
+					{% endif %}
+					{% if article.has('ean') %}
+						{{ article.isbn }}<br/>
+					{% endif %}
+
+					{% if article.hasDownloadableFiles('paid') %}
+						{% for file in article.getDownloadableFiles('paid')|filter(file => file.has('ean')) %}
+							{{ file.get('ean')|isbn }}<br/>
+						{% endfor %}
+					{% endif %}
+
+					{% if article.has('pubdate') %}
+						Parution :
+						{{ article.pubdate|date('j f Y') }}<br>
+					{% endif %}
+				</p>
+				<p>
+					{% if article.has('pages') %}
+						{{ article.pages }}
+						pages<br>
+					{% endif %}
+					{% if article.has('shaping') %}
+						Façonnage :
+						{{ article.shaping }}
+					{% endif %}
+				</p>
+				{% if article.has('price') %}
+					<div>
+						Prix de vente :
+						{{article.price|currency(true)|raw}}
+					</div>
+				{% endif %}
+			</div>
+			<div class="button">
+				{% if not article.isPublished and article.isPreorderable %}
+					{{ article.cartButton('Précommander')|raw }}
+				{% elseif (article.isAvailable and article.isPublished) %}
+						{% if article.has('price') %}
+							{{ article.cartButton('Ajouter au panier')|raw }}
+						{% else %}
+							{{ article.cartButton('Télécharger')|raw }}
+					{% endif %}
+				{% endif %}
+			</div>
+
+			<p class="article-contributors">
+				{% if article.hasOtherContributors() %}
+					{% for people in article.getOtherContributors %}
+						{{ people.job_name}} :
+						<a href="{{ path('people_show', { slug: people.url }) }}">
+							{{ people.name }}
+						</a>
+						<br />
+					{% endfor %}
+				{% endif %}
+			</p>
+
+			{% set other = article.otherVersion %}
+			{% if other and other.type_id == 2 %}
+				<p class="other-version">Existe aussi en
+					<a href="{{ path('article_show', { slug: other.url }) }}">numérique</a>.</p>
+			{% elseif other and other.type_id == 1 %}
+				<p class="other-version">Existe aussi en
+					<a href="{{ path('article_show', { slug: other.url }) }}">papier</a>.</p>
+			{% endif %}
+
+			{% if article.hasDownloadableFiles('free') %}
+				<p>
+					<a class="btn btn-info btn-block" data-toggle="collapse" href="#files">
+						<i class="fa fa-download"></i>
+						Télécharger un extrait</a>
+				</p>
+				<p></p>
+				<p class="text-center collapse" id="files">
+					{% for file in article.getDownloadableFiles('free') %}
+						<a href="{{ file.getUrl() }}" class="btn btn-default btn-sm">
+							<i class="fa fa-file"></i>
+							{{ file.getType('name') }}</a>
+					{% endfor %}
+				</p>
+			{% endif %}
+		</div>
+
+		<div class="infos-col">
+			<h1 class="article-title">{{ article.title }}</h1>
+
+			<h2 class="article-authors">
+				<span class="de">de</span>
+				{% for author in article.getAuthors() %}
+					<a href="{{ path('people_show', { slug: author.url }) }}">
+						{{ author.name }}</a>
+					{% if not loop.last %},
+					{% endif %}
+				{% endfor %}
+			</h2>
+
+			{% if article.has('summary') %}
+				<div class="article-summary">
+					{{ article.summary|raw }}
+				</div>
+			{% endif %}
+
+			{% if article.has('contents') %}
+				<div class="article-contents">
+					<h2>Sommaire</h2>
+					{{ article.contents|raw }}
+				</div>
+			{% endif %}
+
+			<div class="infos-col-line"></div>
+		</div>
+
+		<div class="bonus-col">
+			{% if article.has('bonus') %}
+				<div class="article-bonus">
+					{{ article.bonus|raw }}
+				</div>
+			{% endif %}
+		</div>
+
+		{% if app.user.isAdmin() %}
+			<div class="admin">
+				<p>Article n°
+					{{ article.id }}</p>
+				<p>
+					<a href="/pages/adm_article?id={{ article.id }}">modifier</a>
+				</p>
+				<p>
+					<a href="/pages/adm_stocks?article_id={{ article.id }}">stock</a>
+				</p>
+				<p>
+					<a href="/pages/adm_stock?add={{ article.id }}">ajouter</a>
+				</p>
+			</div>
+		{% endif %}
+
+	</article>
+{% endblock %}

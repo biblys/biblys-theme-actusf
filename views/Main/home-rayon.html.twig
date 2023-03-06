@@ -1,0 +1,59 @@
+{% extends "layout:base.html.twig" %}
+
+{% block main %}
+
+	<div id="home-carousel" class="home-carousel">
+
+		<!-- Bannière 1 -->
+		<a href="https://fr.ulule.com/revolution-23/">
+			<article class="carousel-post" style="background-image: url('/media/bandeaux/la-revolution-dans-l-imaginaire.jpg')"></article>
+		</a>
+
+		<!-- Bannière 2 -->
+		<a href="https://www.editions-actusf.fr/blog/operation-dedicaces-de-fevrier">
+			<article class="carousel-post" style="background-image: url('/media/bandeaux/operation-dedicace-fevrier-2023.png')"></article>
+		</a>
+
+		<!-- Bannière 3 -->
+		<a href="https://www.okpal.com/fantasy-and-moyen-age/#/">
+			<article class="carousel-post" style="background-image: url('/media/bandeaux/okpalfetma.png')"></article>
+		</a>
+
+		<!-- Bannière 4 -->
+		<a href="https://www.editions-actusf.fr/rayon/le-club-de-la-nouvelle">
+			<article class="carousel-post" style="background-image: url('/media/bandeaux/clubjanvier23.png')"></article>
+		</a>
+
+
+		<!-- Bannière 5 -->
+		<a href="https://www.editions-actusf.fr/blog/actusf-revient-en-2023">
+			<article class="carousel-post" style="background-image: url('/media/bandeaux/vacances-2023-tw-plus-fb.jpg')"></article>
+		</a>
+
+		<!-- Bannière 6 -->
+		<a href="https://www.editions-actusf.fr/a/stephane-desienne/sequoia-episode-1-evasion">
+			<article class="carousel-post" style="background-image: url('/media/bandeaux/disponible-maintenant-s.png')"></article>
+		</a>
+
+
+
+
+
+		<img alt="Précédent" class="prev-button" id="carousel-prev-button" src="/theme/carousel-arrow.png">
+		<img alt="Suivant" class="next-button" id="carousel-next-button" src="/theme/carousel-arrow.png">
+	</div>
+
+	<div class="home-articles">
+		{% for article in articles %}
+			<div class="article">
+				{% if article.hasCover() %}
+					{{article.getCoverTag({
+						size: 'w600',
+						link: path('article_show', { slug: article.url })
+					})|raw}}
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+	{% include 'AppBundle:Article:_list.html.twig' %}
+{% endblock %}
