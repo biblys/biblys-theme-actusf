@@ -15,7 +15,7 @@
     {# biblys assets #}
     {% include "layout:_assets_css.html.twig" %}
 
-    <link rel="stylesheet" href="/theme/styles.css?{ASSETS_VERSION}" />
+    <link rel="stylesheet" href="/theme/styles.css?{{ app.site.getOpt('assets_version') }}" />
     <link rel="icon" type="image/png" href="/theme/favicon.png">
 
     <!-- Matomo -->
