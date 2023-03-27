@@ -124,6 +124,6 @@
 
   {{ app.axysMenu|raw }}
   {% include "layout:_assets_js.html.twig" %}
-  <script src="/theme/main.js"></script>
+  <script src="/theme/main.js?{{ app.site.getOpt('assets_version') }}"></script>
   </body>
 </html>
