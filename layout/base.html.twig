@@ -21,6 +21,7 @@
     {% include "layout:_analytics.html.twig" %}
   </head>
   <body>
+    {% include "layout:_overall_menu.html.twig" %}
 
   <div class="page">
     <header class="header">
@@ -122,7 +123,6 @@
     </footer>
   </div>
 
-  {{ app.axysMenu|raw }}
   {% include "layout:_assets_js.html.twig" %}
   <script src="/theme/main.js?{{ app.site.getOpt('assets_version') }}"></script>
   </body>
