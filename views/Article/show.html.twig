@@ -8,8 +8,13 @@
 	<article class="article">
 
 		<div class="cover-col">
-			{% if article.hasCover() %}
-				{{ article.getCoverTag({ class:"cover-image", size:"w300", rel: "lightbox" })|raw }}
+			{% if article.model|hasImage %}
+				{% include "AppBundle:Article:_cover.html.twig" with {
+					article: article.model,
+					class: "cover-image",
+					rel: "lightbox",
+					width: 300
+				} %}
 			{% endif %}
 
 			<div class="price">
@@ -60,12 +65,12 @@
 			</div>
 			<div class="button">
 				{% if not article.isPublished and article.isPreorderable %}
-					{{ article.cartButton('Précommander')|raw }}
+					{% include "AppBundle:Article:_cartButton.html.twig" with { "text": "Précommander" } %}
 				{% elseif (article.isAvailable and article.isPublished) %}
 						{% if article.has('price') %}
-							{{ article.cartButton('Ajouter au panier')|raw }}
+							{% include "AppBundle:Article:_cartButton.html.twig" with { "text": "Ajouter au panier" } %}
 						{% else %}
-							{{ article.cartButton('Télécharger')|raw }}
+							{% include "AppBundle:Article:_cartButton.html.twig" with { "text": "Télécharger" } %}
 					{% endif %}
 				{% endif %}
 			</div>
@@ -73,7 +78,7 @@
 			<p class="article-contributors">
 				{% if article.hasOtherContributors() %}
 					{% for people in article.getOtherContributors %}
-						{{ people.job_name}} :
+						{{ people.role}} :
 						<a href="{{ path('people_show', { slug: people.url }) }}">
 							{{ people.name }}
 						</a>
