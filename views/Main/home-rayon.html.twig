@@ -3,25 +3,25 @@
 {% block main %}
 
 	<div id="home-carousel" class="home-carousel">
-	  
-	<!-- Bannière 1 -->
-		<a href="https://www.editions-actusf.fr/articles/search?q=int%C3%A9grale">
-			<article class="carousel-post" style="background-image: url('/media/bandeaux/ope-integrales.jpg')"></article>
+	    
+	  	<!-- Bannière 2 -->
+		<a href="https://editions-actusf.fr/a/adrien-party/vampirologie_84408">
+			<article class="carousel-post" style="background-image: url('media/bandeaux/vampirologie-dispo.svg')"></article>
 		</a>
-	
-		
-
-		
-		
 		
 		<!-- Bannière 3 -->
-		<a href="https://fr.ulule.com/revolution-23/">
-			<article class="carousel-post" style="background-image: url('/media/bandeaux/site-ulule-prolongations.jpg')"></article>
+		<a href="https://editions-actusf.fr/a/victor-lavalle/le-changelin">
+			<article class="carousel-post" style="background-image: url('media/bandeaux/changelin-dispo.svg')"></article>
 		</a>
-
+				
 		<!-- Bannière 4 -->
-		<a href="https://www.editions-actusf.fr/blog/actusf-revient-en-2023">
-			<article class="carousel-post" style="background-image: url('/media/bandeaux/vacances-2023-tw-plus-fb.jpg')"></article>
+		<a href="https://editions-actusf.fr/">
+			<article class="carousel-post" style="background-image: url('media/bandeaux/editions-collector-24.svg')"></article>
+		</a>
+		
+		<!-- Bannière 5 -->
+		<a href="https://editions-actusf.fr/a/rosalia-aguilar-solace/the-great-library-of-tomorrow">
+			<article class="carousel-post" style="background-image: url('media/bandeaux/tml-decembre.svg')"></article>
 		</a>
 
 
@@ -34,7 +34,7 @@
 			<div class="article">
 				{% if article.hasCover() %}
 					{{article.getCoverTag({
-						size: 'w600',
+						size: 'h250',
 						link: path('article_show', { slug: article.url })
 					})|raw}}
 				{% endif %}
