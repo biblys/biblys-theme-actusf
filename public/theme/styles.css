@@ -87,6 +87,15 @@ ul {
   text-align: center;
 }
 
+.powered-by a {
+  background: #ff6600;
+  border-radius: 4px;
+  color: white;
+  display: inline-block;
+  padding: 2px 4px;
+  text-decoration: none;
+}
+
 /* 1.2 Menu */
 
 .navbar {
