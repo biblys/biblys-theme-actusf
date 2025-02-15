@@ -105,7 +105,7 @@
 				<p></p>
 				<p class="text-center collapse" id="files">
 					{% for file in article.getDownloadableFiles('free') %}
-						<a href="{{ file.getUrl() }}" class="btn btn-default btn-sm">
+						<a href="{{ file.getUrl() }}" class="btn btn-light btn-sm">
 							<i class="fa fa-file"></i>
 							{{ file.getType('name') }}</a>
 					{% endfor %}
