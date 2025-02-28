@@ -20,7 +20,9 @@
 
     {% include "layout:_analytics.html.twig" %}
 
-    <link rel="alternate" type="application/rss+xml" title="Le blog Dystopia" href="/feeds/blog.rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Les derniers billets du blog" href="{{ path('feed_blog') }}">
+    <link rel="alternate" type="application/rss+xml" title="Les dernières parutions du catalogue" href="{{ path('feed_catalog') }}">
+
   </head>
   <body>
     {% include "layout:_overall_menu.html.twig" %}
@@ -49,7 +51,7 @@
             <a href="https://www.instagram.com/actusf/" target="_blank">
               <img class="icon" src="/theme/instagram.png" alt="Instagram">
             </a>
-            <a href="/feeds/blog.rss.xml" target="_blank">
+            <a href="{{ path('feed_index') }}">
               <img class="icon" src="/theme/rss.png" alt="Flux RSS">
             </a>
           </div>
