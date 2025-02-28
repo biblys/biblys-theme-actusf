@@ -99,14 +99,14 @@
 			{% if article.hasDownloadableFiles('free') %}
 				<p>
 					<a class="btn btn-info btn-block" data-toggle="collapse" href="#files">
-						<i class="fa fa-download"></i>
+						<i class="fa-solid fa-file-arrow-down"></i>
 						Télécharger un extrait</a>
 				</p>
 				<p></p>
 				<p class="text-center collapse" id="files">
 					{% for file in article.getDownloadableFiles('free') %}
 						<a href="{{ file.getUrl() }}" class="btn btn-light btn-sm">
-							<i class="fa fa-file"></i>
+							<i class="fa-solid fa-file-arrow-down"></i>
 							{{ file.getType('name') }}</a>
 					{% endfor %}
 				</p>
