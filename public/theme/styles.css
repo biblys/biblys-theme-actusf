@@ -148,83 +148,9 @@ ul {
 
 /* 1.3b Home carousel */
 
-.home-carousel {
-  box-sizing: content-box;
-  margin: 25px auto;
+.HomeCarousel {
+  margin: auto;
   max-width: 800px;
-  padding-bottom: 42%;
-  position: relative;
-}
-
-.home-carousel a {
-  color: white;
-}
-
-.carousel-post {
-  background-position: center center;
-  background-size: cover;
-  display: none;
-  padding-bottom: 50%;
-  position: absolute;
-  width: 100%;
-  transition: opacity 400ms;
-}
-
-.carousel-post .carousel-title {
-  bottom: 0;
-  background-color: #01a1a1;
-  font-family: 'Lemon';
-  font-size: 20px;
-  margin: 0 -6px;
-  max-height: 50px;
-  padding: 5px 70px;
-  position: absolute;
-  text-align: center;
-  transform: translateY(calc(100% + 6px));
-  width: calc(100% + 12px);
-}
-
-.home-carousel .prev-button,
-.home-carousel .next-button {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 100;
-}
-
-.home-carousel .next-button {
-  right: 0;
-  transform: translate(50%,-50%) rotate(180deg);
-}
-
-.home-carousel .left-wing,
-.home-carousel .right-wing {
-  display: none;
-}
-
-.home-carousel .carousel-pagination {
-  background: white;
-  display: inline-block;
-  left: 50%;
-  padding: 0 25px;
-  position: absolute;
-  transform: translateX(-50%);
-  z-index: 100;
-}
-
-.home-carousel .carousel-pagination .carousel-page {
-  background-color: #e2f4f4;
-  border-radius: 10px;
-  display: inline-block;
-  height: 10px;
-  margin: 0 5px;
-  transition: background-color 250ms;
-  width: 10px;
-}
-
-.home-carousel .carousel-pagination .carousel-page.active {
-  background-color: #ee6764
 }
 
 /* 1.4 Article list */

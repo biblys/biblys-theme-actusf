@@ -2,22 +2,31 @@
 
 {% block main %}
 
-	<div id="home-carousel" class="home-carousel">
-	    
-		<!-- Bannière 3 -->
-		<a href="https://editions-actusf.fr/">
-			<article class="carousel-post" style="background-image: url('media/bandeaux/dispocabal.svg')"></article>
-		</a>
-				
-		
-		<!-- Bannière 5 -->
-		<a href="https://editions-actusf.fr/a/thibault-lafargue/le-bouffon-de-la-couronne">
-			<article class="carousel-post" style="background-image: url('media/bandeaux/bouffon-date.svg')"></article>
-		</a>
+	<div id="HomeCarousel" class="HomeCarousel carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators mb-0">
+			<li data-target="#HomeCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#HomeCarousel" data-slide-to="1"></li>
+		</ol>
 
+		<div class="carousel-inner">
+			<!-- Bannière 1 -->
+			<div class="carousel-item active">
+				<a href="https://editions-actusf.fr/">
+					<img alt="" role="presentation"
+							 src="https://editions-actusf.fr/media/bandeaux/dispocabal.svg"
+					>
+				</a>
+			</div>
 
-		<img alt="Précédent" class="prev-button" id="carousel-prev-button" src="/theme/carousel-arrow.png">
-		<img alt="Suivant" class="next-button" id="carousel-next-button" src="/theme/carousel-arrow.png">
+			<!-- Bannière 2 -->
+			<div class="carousel-item">
+				<a href="https://editions-actusf.fr/a/thibault-lafargue/le-bouffon-de-la-couronne">
+					<img alt="" role="presentation"
+							 src="https://editions-actusf.fr/media/bandeaux/bouffon-date.svg"
+					>
+				</a>
+			</div>
+		</div>
 	</div>
 
 	<div class="home-articles">
